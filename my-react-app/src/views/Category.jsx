@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import Header from "../sectioning/Header";
@@ -13,6 +14,8 @@ const formatDate = (dateString) => {
   const formattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
   return formattedDate;
 };
+
+
 
 const Category = () => {
   const [data, setData] = useState([]);

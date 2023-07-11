@@ -127,8 +127,10 @@ const World = () => {
   useEffect(() => {
     fetch("https://restcountries.com/v3.1/all")
       .then((response) => response.json())
+      
       .then((data) => {
         setCountries(data);
+
       })
       .catch((error) => {
         console.log("Error fetching countries:", error);
@@ -159,6 +161,7 @@ const World = () => {
         });
     }
   }, [selectedCountry]);
+  
 
   const handleCountryClick = (country) => {
     setSelectedCountry(country);
