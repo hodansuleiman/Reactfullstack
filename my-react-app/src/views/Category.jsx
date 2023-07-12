@@ -21,8 +21,7 @@ const Main = styled.main`
 const CategoryTitle = styled.h1`
   font-size: 24px;
   margin-bottom: 20px;
-
-  color: blue;
+  color: #fff;
   font-style: italic;
 `;
 
