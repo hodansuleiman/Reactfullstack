@@ -9,6 +9,7 @@ import GlobalStyles from "./components/GlobalStyles";
 export default function App() {
   return (
     <>
+
     <GlobalStyles />
       <Header />
       <Register />

@@ -5,7 +5,10 @@ import Header from "../sectioning/Header";
 import Footer from "../sectioning/Footer";
 import { useParams, Link } from "react-router-dom";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+
 import GlobalStyles from "../components/GlobalStyles";
+=======
+
 
 
 const Main = styled.main`
@@ -18,8 +21,11 @@ const Main = styled.main`
 const CategoryTitle = styled.h1`
   font-size: 24px;
   margin-bottom: 20px;
+
   color: blue;
   font-style: italic;
+=======
+
 `;
 
 const NewsContainer = styled.div`
