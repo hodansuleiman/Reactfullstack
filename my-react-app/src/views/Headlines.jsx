@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+
 import Footer from "../sectioning/Footer";
 import Header from "../sectioning/Header";
 import GlobalStyles from "../components/GlobalStyles";
+
 const Main = styled.main`
   display: flex;
   flex-direction: column;
@@ -23,7 +25,6 @@ const NewsContainer = styled.div`
   justify-content: center;
 `;
 
-
 const NewsCard = styled.div`
   background-color: #f5f5f5;
   border-radius: 10px;
@@ -34,6 +35,7 @@ const NewsCard = styled.div`
   align-items: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 300px;
+  cursor: pointer;
 `;
 
 const NewsImage = styled.img`
@@ -56,14 +58,6 @@ const NewsDescription = styled.p`
   text-align: center;
 `;
 
-const NewsLink = styled.a`
-  font-size: 14px;
-  color: #0366d6;
-  text-decoration: none;
-  margin-top: 10px;
-  text-align: center;
-`;
-
 const Headlines = () => {
   const [headlines, setHeadlines] = useState([]);
 
@@ -79,27 +73,27 @@ const Headlines = () => {
       });
   }, []);
 
+  const handleArticleClick = (url) => {
+    window.location.href = url; // Redirect to the article url
+  };
+
   return (
     <>
-    <GlobalStyles/>
+      <GlobalStyles />
       <Header />
       <Main>
         <Title>Headline News</Title>
         <NewsContainer>
           {headlines.map((headline, index) => (
-            <NewsCard key={index}>
+            <NewsCard
+              key={index}
+              onClick={() => handleArticleClick(headline.url)}
+            >
               {headline.urlToImage && (
                 <NewsImage src={headline.urlToImage} alt="Article" />
               )}
               <NewsTitle>{headline.title}</NewsTitle>
               <NewsDescription>{headline.description}</NewsDescription>
-              <NewsLink
-                href={headline.url}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Read More
-              </NewsLink>
             </NewsCard>
           ))}
         </NewsContainer>
