@@ -29,10 +29,6 @@ const BurgerIcon = styled(FaBars)`
 const NavLinks = styled.div`
   display: flex;
   align-items: center;
-
-  @media (max-width: 768px) {
-    display: none;
-  }
 `;
 
 const NavLink = styled.a`
@@ -54,32 +50,13 @@ const DropdownMenu = styled.div`
   padding: 10px;
   display: none;
   flex-direction: column;
-
-  @media (max-width: 768px) {
-    display: ${({ isOpen }) => (isOpen ? "flex" : "none")};
-  }
 `;
-
-const DropdownLink = styled.a`
-  color: #fff;
-  text-decoration: none;
-  margin: 5px;
-
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
-
-
-
-
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
   };
 
   return (
@@ -88,7 +65,7 @@ const Header = () => {
       <div className="y-wrap">
         <Nav>
           <Logo src="images/customlogo.JPG" alt="Logo" />
-          <BurgerIcon onClick={toggleMenu} />
+          <BurgerIcon onClick={toggleDropdown} />
           <NavLinks>
             <NavLink href="/headlines">Headlines</NavLink>
             <NavLink href="/world">World</NavLink>
@@ -102,21 +79,19 @@ const Header = () => {
             <NavLink href="/account">Account</NavLink>
           </NavLinks>
         </Nav>
-        {isOpen && (
-          <DropdownMenu isOpen={isOpen}>
-            <DropdownLink href="/headlines">Headlines</DropdownLink>
-            <DropdownLink href="/world">World</DropdownLink>
-            <DropdownLink href="/politics">Politics</DropdownLink>
-            <DropdownLink href="/business">Business</DropdownLink>
-            <DropdownLink href="/health">Health</DropdownLink>
-            <DropdownLink href="/entertainment">Entertainment</DropdownLink>
-            <DropdownLink href="/travel">Travel</DropdownLink>
-            <DropdownLink href="/sports">Sports</DropdownLink>
-            <DropdownLink href="/profile">Profile</DropdownLink>
-            <DropdownLink href="/account">Account</DropdownLink>
-          </DropdownMenu>
-        )}
-        </div>
+        <DropdownMenu style={{ display: isDropdownOpen ? "flex" : "none" }}>
+          <NavLink href="/headlines">Headlines</NavLink>
+          <NavLink href="/world">World</NavLink>
+          <NavLink href="/politics">Politics</NavLink>
+          <NavLink href="/business">Business</NavLink>
+          <NavLink href="/health">Health</NavLink>
+          <NavLink href="/entertainment">Entertainment</NavLink>
+          <NavLink href="/travel">Travel</NavLink>
+          <NavLink href="/sports">Sports</NavLink>
+          <NavLink href="/profile">Profile</NavLink>
+          <NavLink href="/account">Account</NavLink>
+        </DropdownMenu>
+      </div>
     </HeaderContainer>
   );
 };
