@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import styled from "styled-components";
 import { FaBars } from "react-icons/fa";
@@ -13,6 +14,7 @@ const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
 `;
 
 const Logo = styled.img`
@@ -70,6 +72,26 @@ const DropdownLink = styled.a`
   }
 `;
 
+  padding-right: 100px;
+`;
+
+const NavLink = styled(Link)`
+  color: #fff;
+  text-decoration: none;
+  margin-right: 15px;
+  font-size: 14px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+`;
+const Logo = styled.img`
+ width: 100px;
+ height: 75px;
+ padding-bottom: 20px;
+`
+
+
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -82,6 +104,7 @@ const Header = () => {
       <GlobalStyles />
       <div className="y-wrap">
         <Nav>
+
           <Logo src="images/customlogo.JPG" alt="Logo" />
           <BurgerIcon onClick={toggleMenu} />
           <NavLinks>
@@ -111,6 +134,22 @@ const Header = () => {
             <DropdownLink href="/account">Account</DropdownLink>
           </DropdownMenu>
         )}
+
+        <Logo src="/images/customlogo.JPG" alt="Logo" />
+        <div>
+          <NavLink to="/headlines">Headlines</NavLink>
+          <NavLink to="/world">World</NavLink>
+          <NavLink to="/politics">Politics</NavLink>
+          <NavLink to="/business">Business</NavLink>
+          <NavLink to="/health">Health</NavLink>
+          <NavLink to="/entertainment">Entertainment</NavLink>
+          <NavLink to="/travel">Travel</NavLink>
+          <NavLink to="/sports">Sports</NavLink>
+          <NavLink to="/profile">Profile</NavLink>
+          <NavLink to="/account">Account</NavLink>
+          </div>
+        </Nav>
+
       </div>
     </HeaderContainer>
   );

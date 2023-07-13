@@ -25,6 +25,9 @@ const NewsContainer = styled.div`
   justify-content: center;
 `;
 
+
+
+
 const NewsCard = styled.div`
   background-color: #f5f5f5;
   border-radius: 10px;
