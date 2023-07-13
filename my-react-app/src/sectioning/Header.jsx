@@ -70,6 +70,11 @@ const DropdownLink = styled.a`
   }
 `;
 
+
+
+
+
+
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -111,7 +116,7 @@ const Header = () => {
             <DropdownLink href="/account">Account</DropdownLink>
           </DropdownMenu>
         )}
-      </div>
+        </div>
     </HeaderContainer>
   );
 };
