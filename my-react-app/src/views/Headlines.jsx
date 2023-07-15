@@ -4,6 +4,7 @@ import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import Footer from "../sectioning/Footer";
 import Header from "../sectioning/Header";
 import GlobalStyles from "../components/GlobalStyles";
+
 const Main = styled.main`
   display: flex;
   flex-direction: column;
