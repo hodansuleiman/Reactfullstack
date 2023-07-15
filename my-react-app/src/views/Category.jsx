@@ -4,6 +4,10 @@ import Header from "../sectioning/Header";
 import Footer from "../sectioning/Footer";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import styled from "styled-components";
+
+
+
+
 import GlobalStyles from "../components/GlobalStyles";
 
 const Main = styled.main`
@@ -96,11 +100,13 @@ const FilledHeartIcon = styled(AiFillHeart)`
   transition: color 0.3s ease;
 `;
 
+
 const formatDate = (dateString) => {
   const date = new Date(dateString);
   const formattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
   return formattedDate;
 };
+
 
 const Category = () => {
   const [data, setData] = useState([]);
@@ -116,8 +122,8 @@ const Category = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        userId: 1,
-        articleId: url,
+        user_id: 1,
+        article_id: url,
       }),
     });
     const responseData = await response.json();

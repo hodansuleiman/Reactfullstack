@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { FaBars } from "react-icons/fa";
@@ -29,12 +30,18 @@ const BurgerIcon = styled(FaBars)`
   @media (min-width: 768px) {
     display: none;
   }
+
+const NavLinks = styled.div`
+  display: flex;
+  align-items: center;
+
 `;
 
 const BurgerIconWrapper = styled.div`
   display: flex;
   align-items: center;
 `;
+
 
 const NavLinks = styled.div`
   display: flex;
@@ -61,10 +68,22 @@ const NavLink = styled.a`
   &:hover {
     text-decoration: underline;
   }
+
+const DropdownMenu = styled.div`
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  padding: 10px;
+  display: none;
+  flex-direction: column;
+
 `;
 
 const Header = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
   const [isMobile, setIsMobile] = useState(false);
 
   const toggleDropdown = () => {
@@ -91,12 +110,19 @@ const Header = () => {
     };
   }, []);
 
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+
   return (
     <HeaderContainer>
       <GlobalStyles />
       <div className="y-wrap">
         <Nav>
           <Logo src="images/customlogo.JPG" alt="Logo" />
+
           {isMobile ? (
             <>
               <BurgerIconWrapper>
@@ -130,6 +156,34 @@ const Header = () => {
             </NavLinks>
           )}
         </Nav>
+
+          <BurgerIcon onClick={toggleDropdown} />
+          <NavLinks>
+            <NavLink href="/headlines">Headlines</NavLink>
+            <NavLink href="/world">World</NavLink>
+            <NavLink href="/politics">Politics</NavLink>
+            <NavLink href="/business">Business</NavLink>
+            <NavLink href="/health">Health</NavLink>
+            <NavLink href="/entertainment">Entertainment</NavLink>
+            <NavLink href="/travel">Travel</NavLink>
+            <NavLink href="/sports">Sports</NavLink>
+            <NavLink href="/profile">Profile</NavLink>
+            <NavLink href="/account">Account</NavLink>
+          </NavLinks>
+        </Nav>
+        <DropdownMenu style={{ display: isDropdownOpen ? "flex" : "none" }}>
+          <NavLink href="/headlines">Headlines</NavLink>
+          <NavLink href="/world">World</NavLink>
+          <NavLink href="/politics">Politics</NavLink>
+          <NavLink href="/business">Business</NavLink>
+          <NavLink href="/health">Health</NavLink>
+          <NavLink href="/entertainment">Entertainment</NavLink>
+          <NavLink href="/travel">Travel</NavLink>
+          <NavLink href="/sports">Sports</NavLink>
+          <NavLink href="/profile">Profile</NavLink>
+          <NavLink href="/account">Account</NavLink>
+        </DropdownMenu>
+
       </div>
       {isDropdownOpen && <div style={{ height: "200px" }}></div>}
     </HeaderContainer>
