@@ -3,69 +3,12 @@ import styled from "styled-components";
 import { FaBars } from "react-icons/fa";
 import GlobalStyles from "../components/GlobalStyles";
 
-const HeaderContainer = styled.header`
-  background-color: blue;
-  padding: 10px;
-  color: blue;
-`;
-
-const Nav = styled.nav`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-const Logo = styled.img`
-  width: 100px;
-  height: auto;
-  object-fit: fixed;
-`;
-
-const BurgerIcon = styled(FaBars)`
-  font-size: 24px;
-  color: #fff;
-  cursor: pointer;
-
-  @media (min-width: 768px) {
-    display: none;
-  }
-`;
-
-const BurgerIconWrapper = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const NavLinks = styled.div`
-  display: flex;
-  align-items: center;
-
-  @media (max-width: 768px) {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    display: ${({ isOpen }) => (isOpen ? "flex" : "none")};
-    flex-direction: column;
-    background-color: blue;
-    padding: 10px;
-    width: 100%;
-    z-index: 1;
-  }
-`;
-
-const NavLink = styled.a`
-  color: #fff;
-  text-decoration: none;
-  margin: 5px;
-
-  &:hover {
-    text-decoration: underline;
-  }
-`;
+ 
 
 const Header = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -90,6 +33,7 @@ const Header = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
 
   return (
     <HeaderContainer>
@@ -136,4 +80,63 @@ const Header = () => {
   );
 };
 
+const HeaderContainer = styled.header`
+  background-color: blue;
+  padding: 10px;
+  color: blue;
+`;
+
+const Nav = styled.nav`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const Logo = styled.img`
+  width: 100px;
+  height: auto;
+  object-fit: fixed;
+`;
+
+const BurgerIcon = styled(FaBars)`
+  font-size: 24px;
+  color: #fff;
+  cursor: pointer;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+`
+
+
+const BurgerIconWrapper = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+
+
+
+const NavLinks = styled.div`
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: ${({ isOpen }) => (isOpen ? "flex" : "none")};
+    flex-direction: column;
+    background-color: blue;
+    padding: 10px;
+    width: 100%;
+    z-index: 1;
+  }
+`;
+
+const NavLink = styled.a`
+  color: #fff;
+  text-decoration: none;
+  margin: 5px;
+`
 export default Header;
