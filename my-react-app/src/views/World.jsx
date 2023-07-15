@@ -5,6 +5,7 @@ import Header from "../sectioning/Header";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import GlobalStyles from "../components/GlobalStyles";
 
+
 const Main = styled.main`
   display: flex;
   flex-direction: column;
@@ -18,7 +19,6 @@ const Title = styled.h1`
   color: #fff;
   font-style: italic;
 `;
-
 const SearchInput = styled.input`
   width: 300px;
   height: 30px;
@@ -26,7 +26,6 @@ const SearchInput = styled.input`
   margin-bottom: 10px;
   color: black;
 `;
-
 const CountryList = styled.ul`
   display: flex;
   flex-wrap: wrap;
@@ -127,10 +126,8 @@ const World = () => {
   useEffect(() => {
     fetch("https://restcountries.com/v3.1/all")
       .then((response) => response.json())
-      
       .then((data) => {
         setCountries(data);
-
       })
       .catch((error) => {
         console.log("Error fetching countries:", error);
@@ -161,7 +158,6 @@ const World = () => {
         });
     }
   }, [selectedCountry]);
-  
 
   const handleCountryClick = (country) => {
     setSelectedCountry(country);
