@@ -1,13 +1,15 @@
-import express from 'express'; // import express module 
-let router = express.Router(); // handle url // router object allows you to define routes and associated request handlers for those routes. 
-import User from '../models/userSchema.js';
+const express = require ('express'); // import express module 
+const router = express.Router(); // handle url // router object allows you to define routes and associated request handlers for those routes. 
+//let router = express.Router(); // handle url // router object allows you to define routes and associated request handlers for those routes. 
+// import User from '../models/userSchema.js'; // mongo 
+const User = require ('../models/userSchema.js')
 
 //get all articles
 //fetch function  used to make HTTP request
 //defining GET route handler for the /category/:category endpoint
 // router.get() method to specify the HTTP method as GET and the route pattern as /category/:category.
 //URL with the category parameter and an API key from the environment variables to fetch data from the News API.
-//response is converted to jason  and is sent back as res.json 
+//response is converted to json  and is sent back as res.json 
 
 
 
@@ -123,4 +125,4 @@ router.delete("/:id", (req, res) => {
 
 
 
-export default router;
+module.exports = router;
