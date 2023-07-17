@@ -59,13 +59,28 @@ router.post("/", async (req, res)=> { //local host 8080
 
 
 //showing user by id profile
+// returns, id, email, password, favoriteList that needs to go to user profile page
 // need to do fetch to account page to display informaiton 
-router.get("/user/:user_id", async (req, res) => {
-    console.log(req.params.id)
+router.get("/user", async (req, res) => {
+
+    console.log(req.session) // ask for session by console log 
+    /*
+    if(req.session.user.hasOwnProperty('id')){
+        res.json({
+            message: "No Session User ID Please Log in"
+        })
+    } else {
+        res.json({
+            message: "pass"
+        })
+    }
+*/
 
     try{
+    
+        //console.log("do i have session??",  req.session.user.id)
         const result = await User.findById(
-            req.params.user_id
+            req.session.user.id
         )
         res.json(result)
     } catch (err){
@@ -73,12 +88,6 @@ router.get("/user/:user_id", async (req, res) => {
         res.json(err)
     }
 
-    /*
-    let { username } = req.body;
-    let user_Id = await db.query(`SELECT userId FROM userinfo WHERE username='${username}'`)
-    let favoriteArticles = await db.query(`SELECT favoriteArticles FROM favorites WHERE user_id='${user_Id}'`);
-    res.json(favoriteArticles);
-    */
 })
 
 router.get('/id', async (req, res) => {
@@ -110,10 +119,6 @@ router.post("/", (req, res) => { // sending data to body , send user id and arti
     })
 
 });*/
-
-router.delete("/:id", (req, res) => {
-
-});
 
 
 

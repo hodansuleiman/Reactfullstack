@@ -1,13 +1,15 @@
-import express from 'express';
-import fetch from 'node-fetch';
+const express = require ('express');
+// import fetch from 'node-fetch';
+const fetch = require('node-fetch');
 
 const router = express.Router();
 
 router.get("/:country", async (req, res) => {
+
   try {
     const { country } = req.params;
-    const apiKey = "97ff5fe754fd47b9830aa078f40a6acc"; 
-    const response = await fetch(`https://newsapi.org/v2/top-headlines?q=${country}&apiKey=${apiKey}`);
+
+    const response = await fetch(`https://newsapi.org/v2/top-headlines?q=${country}&apiKey=${process.env.API_KEY}`);
     const data = await response.json();
     res.json(data);
   } catch (err) {
@@ -16,4 +18,5 @@ router.get("/:country", async (req, res) => {
   }
 });
 
-export default router;
+// export default router;
+module.exports = router;
