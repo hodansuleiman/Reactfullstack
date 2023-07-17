@@ -52,6 +52,8 @@ export default function Register() {
     <Container>
       <Title>Register</Title>
       <Form onSubmit={handleSubmit}>
+   
+
         <Input
           type="email"
           name="email"

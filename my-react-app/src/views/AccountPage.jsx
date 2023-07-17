@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import GlobalStyles from "../components/GlobalStyles";
+import Header from "../sectioning/Header";
 
 
 const Container = styled.div`
@@ -74,6 +75,7 @@ const AccountPage = () => {
 
   return (
     <>
+    <Header/>
     <GlobalStyles/>
     <Container>
       <Title>Account Settings</Title>
