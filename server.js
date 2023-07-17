@@ -49,7 +49,8 @@ server.use(express.urlencoded({ extended: true }));
 server.use(express.json());
 
 //reads the disct files
-server.use(express.static('./my-react-app/dist'));
+
+server.use(express.static(path.resolve(__dirname + '/my-react-app/dist')));
 
 
 main().catch(err=> console.log(err));
@@ -87,6 +88,10 @@ server.use("/auth",authRoutes) //login & register
 
 
 
+// catch-all so react can handle routing
+server.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, './my-react-app/dist', 'index.html'));
+});
 
 server.listen(PORT, async () => {
   console.log(`This server is running at PORT ${PORT}`);
